@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <div class="navbar-header center">
+      <%= image_tag('ueg/ueg.png', size: '140x60')%>
+    </div>
+    <div id="navbar">
+      <ul class="nav navbar-nav pull-right">
+        <% if user_signed_in? %>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.name %>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item"><%= link_to 'Profile', edit_user_registration_path %></a>
+          <a class="dropdown-item"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></a>
+        </div>
+        </div>
+        <% else %>
+          <li><%= link_to 'Log In', new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
